@@ -1,0 +1,44 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Места</title>
+    <script defer src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script defer src="~/js/site.js"></script>
+</head>
+<body>
+    <div>
+        <h3>Места на мероприятии</h3>
+        <form name="reservation" asp-controller="Home" asp-action="Reservation">
+            <input type="hidden" name="EventId" value="@ViewBag.eventId" />
+            <input type="text" name="Email" value="" />
+            <input type="text" name="Name" value="" />
+            <input id="submitForm" type="submit" value="Забронировать" />
+            <table>
+                <tr>
+                    <td><p>Этаж</p></td>
+                    <td><p>Номер места</p></td>
+                    <td><p>Статус</p></td>
+                    <td><p>Цена</p></td>
+                </tr>
+                @foreach (var v in ViewBag.seats)
+                {
+                    <tr>
+                        <td><p>@v.Level</p></td>
+                        <td><p>@v.SeatNumber</p></td>
+                        <td><p>@(v.Status ? "Свободно" : "Забронировано")</p></td>
+                        <td><p>@v.Price</p></td>
+                        <td><p name="changeSeat">+</p></td>
+                    </tr>
+                }
+            </table>
+        </form>
+    </div>
+</body>
+</html>
+

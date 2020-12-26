@@ -1,0 +1,37 @@
+﻿@{
+    Layout = null;
+    //ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Список программ</title>
+</head>
+<body>
+    <div>
+        <h3>Список программ</h3>
+        <table>
+            <tr>
+                <td><p>Название</p></td>
+                <td><p>Жанр</p></td>
+                <td><p>Описание</p></td>
+                <td><p>Цена</p></td>
+                <td><p>Время</p></td>
+            </tr>
+            @foreach (var p in ViewBag.shows)
+            {
+                <tr>
+                    <td><p>@p.Title</p></td>
+                    <td><p>@p.Genre</p></td>
+                    <td><p>@p.Description</p></td>
+                    <td><p>@p.Price</p></td>
+                    <td><p>@p.Time</p></td>
+                    <td><p><a asp-controller="Home" asp-action="ShowDates" asp-route-id="@p.Id">Время показа</a></p></td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>

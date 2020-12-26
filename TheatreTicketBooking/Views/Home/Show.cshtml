@@ -1,0 +1,56 @@
+﻿@{
+    Layout = null;
+    //ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Расписание программы</title>
+</head>
+<body>
+    <div>
+        <h3>Расписание программы</h3>
+        <form asp-controller="Home" asp-action="ShowSeats">
+            <table>
+                <tr>
+                    <td><p>Название</p></td>
+                    <td><p>Жанр</p></td>
+                    <td><p>Описание</p></td>
+                    <td><p>Цена</p></td>
+                    <td><p>Время</p></td>
+                    <td><p>Даты</p></td>
+                </tr>
+                <tr>
+                    <td><p>@ViewBag.show.Title</p></td>
+                    <td><p>@ViewBag.show.Genre</p></td>
+                    <td><p>@ViewBag.show.Description</p></td>
+                    <td><p>@ViewBag.show.Price</p></td>
+                    <td><p>@ViewBag.show.Time</p></td>
+                    <td>
+                        <select name="Start">
+                            @foreach (var d in ViewBag.dates)
+                            {
+                                <option>@d</option>
+                            }
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <input type="submit" value="Показать места" />
+        </form>
+        @*<input id="press" type="button" value="12345" />*@
+        @*<p><a asp-controller="Values" asp-action="function" asp-route-id="@ViewBag.show.Id">Время показа</a></p>*@
+        @*asp-all-route-data='new Dictionary<string, string> { { "level_1", "1,2,3" }, { "level_2", "1,2,6" } }'*@
+        @*<form name="reservation" asp-controller="Home" asp-action="hello">
+            <table>
+                <tr>
+                </tr>
+            </table>
+            <input id="submitForm" type="submit" value="DO" />
+        </form>*@
+
+    </div>
+</body>
+</html>
